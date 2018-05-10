@@ -6,29 +6,19 @@
     "picture_url": "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/14/09/smoky-pork-stir-fry-ck-x.jpg?itok=wY1urMtG",
     "options" : [
       { "title" : "Protein",
-        "type" : "square",
-        "option1" : "Chicken",
-        "option2" : "Steak",
-        "option3" : "Tofu",
-        "option4" : "Veggies"
+        "type" : "square-select",
+        "optionsList" : ["Chicken","Steak","Tofu","Veggies"],
+        "price" : 2
       },
       { "title" : "Sauce",
         "type" : "dropdown",
-        "option1" : "Teryaki",
-        "option2" : "Orange",
-        "option3" : "Plum",
-        "option4" : "Big Dave's"
+        "optionsList" : ["Teryaki","Orange","Plum","Big Dave's"],
+        "price" : 0
       },
       { "title" : "Extra",
         "type" : "select-box",
-        "option1" : "Sauce-Light",
-        "option2" : "Sauce-medium",
-        "option3" : "No-rice",
-        "option4" : "Extra-rice"
-      },
-      { "price1" : 2,
-        "price2" : 0,
-        "price3" : 0
+        "optionsList" : ["Sauce-Light","Sauce-medium","No-rice","Extra-rice"],
+        "price" : 0
       }
     ]
   },
@@ -40,28 +30,19 @@
     "options" : [
       { "title" : "Protein",
         "type" : "select-box",
-        "option1" : "Chicken",
-        "option2" : "Terky",
-        "option3" : "Tofu",
-        "option4" : "None"
+        "optionsList" : ["Chicken","Turkey","Tofu","None"],
+        "price" : 2
       },
       { "title" : "Toppings",
         "type" : "select-box",
-        "option1" : "Onions",
-        "option2" : "Cheese",
-        "option3" : "Spinach",
-        "option4" : "Beans"
+        "optionsList" : ["Onions","Cheese","Spinach","Beans"],
+        "price" : 0
+
       },
       { "title" : "Extra",
         "type" : "select-box",
-        "option1" : "Light-cheese",
-        "option2" : "Heavy-Chese",
-        "option3" : "Egg Whites",
-        "option4" : "Half-Half"
-      },
-      { "price1" : 1,
-        "price2" : 0,
-        "price3" : 0
+        "optionsList" : ["Light-cheese","Heavy-Chese","Egg Whites","Half-Half"],
+        "price": 0
       }
     ]
   }

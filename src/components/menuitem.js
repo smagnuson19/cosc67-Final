@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Immutable from 'immutable';
-// import squareSelect from './components/squareSelect';
+import SquareSelect from './squareSelect';
 
 
 class MenuItem extends Component {
@@ -8,10 +8,15 @@ class MenuItem extends Component {
     super(props);
     this.state = {
       price: 0,
-      // optionsSelected: [],
+      optionsSelected: {
+        optionType: this.props.title,
+      },
       menuItemInfo: [],
 
     };
+    this.renderOptions = this.renderOptions.bind(this);
+    this.updateTotal = this.updateTotal.bind(this);
+    this.updateItems = this.updateItems.bind(this);
   }
   componentDidMount() {
     fetch('./src/data/data.json')
@@ -20,21 +25,55 @@ class MenuItem extends Component {
       })
       .then((json) => {
         console.log(json.products);
-        console.log(this.state.price);
         this.setState({ menuItemInfo: json.products[this.props.theID] });
-        console.log(this.state.menuItemInfo);
+        this.setState({ price: json.products[this.props.theID].price });
+        // console.log(this.state.menuItemInfo);
       });
   }
+  updateTotal(value) {
+    this.setState({ price: this.state.price + value });
+  }
 
-  // checkOptionsLoading() {
-  //   this.state.menuItemInfo.map((itemOption, id) => (
-  //     if(itemOption.type
-  //
-  //
-  //   )
-  //
-  // )
-  // }
+  updateItems(item, quantity) {
+    const newItem = Object.assign(this.state.optionsSelected, item);
+    this.setState({ optionsSelected: newItem });
+    console.log(`OPTIONS SELECTED in update ${JSON.stringify(this.state.optionsSelected)}`);
+  }
+
+
+  renderOptions(itemOption) {
+    if (itemOption.type === 'square-select') {
+      return (
+        <div className="optionWrapper">
+          <SquareSelect
+            title={this.state.title}
+            itemPrice={this.state.menuItemInfo.price}
+            currentPrice={this.state.price}
+            optionsPrice={itemOption.price}
+            optionsList={itemOption.optionsList}
+            updateTotal={this.updateTotal}
+            updateItems={this.updateItems}
+          />
+        </div>
+      );
+    } else if (itemOption.type === 'dropdown') {
+      return (
+        <div className="optionWrapper">
+      squareSelect item w list
+        </div>
+      );
+    } else if (itemOption.type === 'select-box') {
+      return (
+        <div className="optionWrapper">
+      squareSelect item w list
+        </div>
+      );
+    } else {
+      return (
+        <p> No items to show </p>
+      );
+    }
+  }
 
   render() {
     if (this.state.menuItemInfo.length === 0) {
@@ -44,21 +83,23 @@ class MenuItem extends Component {
         </div>
       );
     } else {
-      console.log(this.state.menuItemInfo.options);
+      // console.log(this.state.menuItemInfo.options);
 
       return (
         <div className="menuItem-Wrapper" >
           <div className="header-area">
             <ul>
               <li> {this.state.menuItemInfo.title}
-                Price: {this.state.menuItemInfo.price}
+                Price: {this.state.price}
               </li>
               <li> Description: {this.state.menuItemInfo.description} </li>
             </ul>
             <img src={this.state.menuItemInfo.picture_url} alt="" />
           </div>
           <div className="menuOptions-area">
-          options go here //pass in id
+            {this.state.menuItemInfo.options.map((itemOption, id) => (
+              this.renderOptions(itemOption)
+              ))}
           </div>
         </div>
       );

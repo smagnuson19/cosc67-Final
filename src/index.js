@@ -17,9 +17,7 @@ class App extends Component {
       itemSelection: 0,
       modalIsOpen: false,
     };
-    // this.updateMenuItem = this.newNote.bind(this);
-    // this.deleteNote = this.deleteNote.bind(this);
-    // this.editNote = this.editNote.bind(this);
+
     this.openModal = this.openModal.bind(this);
     // this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
