@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import Immutable from 'immutable';
+import Dropdown from './dropdown';
 import SquareSelect from './squareSelect';
 
 
@@ -8,9 +9,7 @@ class MenuItem extends Component {
     super(props);
     this.state = {
       price: 0,
-      optionsSelected: {
-        optionType: this.props.title,
-      },
+      optionsSelected: {},
       menuItemInfo: [],
 
     };
@@ -46,7 +45,7 @@ class MenuItem extends Component {
       return (
         <div className="optionWrapper">
           <SquareSelect
-            title={this.state.title}
+            title={itemOption.title}
             itemPrice={this.state.menuItemInfo.price}
             currentPrice={this.state.price}
             optionsPrice={itemOption.price}
@@ -57,15 +56,23 @@ class MenuItem extends Component {
         </div>
       );
     } else if (itemOption.type === 'dropdown') {
+      const stringItem = JSON.stringify(itemOption.optionsList);
       return (
         <div className="optionWrapper">
-      squareSelect item w list
+          <Dropdown
+            title={itemOption.title}
+            theID={this.props.theID}
+            optionsPrice={itemOption.price}
+            updateTotal={this.updateTotal}
+            updateItems={this.updateItems}
+            optionsListString={stringItem}
+          />
         </div>
       );
     } else if (itemOption.type === 'select-box') {
       return (
         <div className="optionWrapper">
-      squareSelect item w list
+      selectbox item w list
         </div>
       );
     } else {

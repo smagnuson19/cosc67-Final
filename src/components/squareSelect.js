@@ -90,7 +90,7 @@ class SquareSelect extends Component {
       return (
         <div className=" square-select" >
           <div className="option-1">
-            <h2> {this.props.title}</h2>
+            <h3> {this.props.title}</h3>
             <div className="buttonGroup">
               <button name="button1" onClick={() => this.buttonClick('button0')}>
                 {this.props.optionsList[0]}

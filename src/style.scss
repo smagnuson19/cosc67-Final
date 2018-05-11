@@ -1,6 +1,8 @@
 body, html {
   font-family: 'Work Sans', sans-serif;
-  background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+  background: #00467f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #00467f, #a5cc82); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #00467f, #a5cc82);
   height: 100%;
 }
 .logo {
@@ -9,4 +11,70 @@ body, html {
   height: 100px;
   background-repeat: no-repeat;
   background-size: contain;
+}
+.active {
+  color: rgb(2, 107, 65);
+}
+
+li {
+	list-style-type: none;
+
+}
+
+a{
+	text-decoration: none;
+	color: #000721;
+}
+a:hover{
+	color: rgb(2, 107, 65);;
+}
+
+.navBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 3rem;
+  padding-right: 3rem;
+
+}
+
+.body-wrapper{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  width: 95%
+
+}
+
+
+
+.menuItem-wrapper {
+  width: 90%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  .menuItem-Wrapper {
+
+    margin: 2rem;
+    padding-left: .5rem;
+    padding-right:.5rem;
+    padding-bottom: 1rem;
+    width: 23rem;
+
+    img {
+      width: auto;
+      height: 300px;
+    }
+    ul{
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color:rgb(255, 255, 255);
+      margin: 1rem;
+    }
+  }
 }

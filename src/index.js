@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+// import '~slick-carousel/slick/slick.css';
+// import '~slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 // import Immutable from 'immutable';
 import MenuItem from './components/menuitem';
+
 
 import './style.scss';
 
@@ -63,11 +67,43 @@ class App extends Component {
         </div>
       );
     } else {
+      const modalStyles = {
+        content: {
+          position: 'absolute',
+          top: '40px',
+          left: '40px',
+          right: '40px',
+          bottom: '40px',
+          border: '1px solid #ccc',
+          background: '#fff',
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          borderRadius: '4px',
+          outline: 'none',
+          padding: '20px',
+        },
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.75)',
+        },
+      };
+
+      const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      };
       return (
         <div className="body-wrapper">
           <div className="itemListDisplay">
             <div className="itemList">
-              An Item
+              An item in your cart goes here
             </div>
             <div className="itemListInfo">
               <ul>
@@ -78,26 +114,31 @@ class App extends Component {
           </div>
 
 
-          <div className="menuItemDisplay">
-            {this.state.menuItems.map((product, id) =>
-          (
-            <div key={product.id} role="button" tabIndex={0} className="menuItem-Wrapper" onClick={() => this.onSelectItemClick(product.id)}>
-              <ul>
-                <li><h3>{product.name}</h3></li>
-                <li><img src={product.picture_url} alt="" /></li>
-                <li>Descrip: {product.description}</li>
-                <li>Price: {product.price}</li>
-              </ul>
-            </div>
+          <div className="menuItem-wrapper">
+            <div>
+              {this.state.menuItems.length > 0 ?
+                <Slider {...settings}>
+                  {this.state.menuItems.map((product, index) =>
+                (
+                  <div data-index={product.id} key={product.id} role="button" tabIndex={0} className="menuItem-Wrapper" onClick={() => this.onSelectItemClick(product.id)}>
+                    <ul>
+                      <li><h3>{product.name}</h3></li>
+                      <li><img src={product.picture_url} alt="" /></li>
+                      <li>Descrip: {product.description}</li>
+                      <li>Price: {product.price}</li>
+                    </ul>
+                  </div>
           ))}
+                </Slider> : null}
+            </div>
           </div>
-          <button onClick={this.openModal}>Open Modal</button>
           <Modal
             isOpen={this.state.modalIsOpen}
             // onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
             overlayClassName="Overlay"
             className="Modal"
+            style={modalStyles}
             contentLabel="Modal-Options"
           >
             <h2>Hello</h2>
