@@ -22,10 +22,10 @@ class Dropdown extends Component {
     }
     this.setState({ itemsSelected: options }, () => {
       const json = { };
-      json[`${this.props.title}: `] = this.state.itemsSelected;
-      this.props.updateItems(json);
+      json[`${this.props.title}`] = this.state.itemsSelected;
+      this.props.updateTotal(this.props.optionsPrice, json);
     });
-    this.props.updateTotal(this.props.optionsPrice);
+
 
     console.log(this.state.menuItemInfo);
     console.log(`${this.state.itemsSelected} do something state`);

@@ -22,7 +22,7 @@
         "price" : 0
       },
       { "title" : "Extra",
-        "type" : "select-box",
+        "type" : "square-select",
         "optionsList" : ["Sauce-Light","Sauce-medium","No-rice","Extra-rice"],
         "price" : 0
       }
@@ -35,48 +35,49 @@
     "picture_url": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/09/omelette.jpg?itok=7K3AxA-w",
     "options" : [
       { "title" : "Protein",
-        "type" : "select-box",
+        "type" : "square-select",
         "optionsList" : ["Chicken","Turkey","Tofu","None"],
         "price" : 2
       },
       { "title" : "Toppings",
-        "type" : "select-box",
-        "optionsList" : ["Onions","Cheese","Spinach","Beans"],
+        "type" : "dropdown",
+        "optionsList" : [
+          {"value" : "Cheese", "label" : "Cheese" },
+          {"value" : "Onions", "label" : "Onions" },
+          {"value" : "Spinach", "label" : "Spinach" },
+          {"value" : "Corn", "label" : "Corn" },
+          {"value" : "Tomato", "label" : "Tomato" },
+          {"value" : "Beans", "label" : "Beans" }
+        ],
         "price" : 0
 
-      },
-      { "title" : "Extra",
-        "type" : "select-box",
-        "optionsList" : ["Light-cheese","Heavy-Chese","Egg Whites","Half-Half"],
-        "price": 0
       }
     ]
   },
-  { "id" : 3 ,
+  { "id" : 3,
     "title": "Pasta",
     "price" : 10,
-    "description": "Try this healthy creation with wild customizations",
-    "picture_url": "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/14/09/smoky-pork-stir-fry-ck-x.jpg?itok=wY1urMtG",
+    "description": "Everyone loves pasta! Choose from various sauces and combine different ones for a crazy combo!",
+    "picture_url": "https://static1.squarespace.com/static/57afb7b93e00be9be5e829ba/t/5911380117bffce40d7569c8/1494300697326/",
     "options" : [
-      { "title" : "Protein",
+      { "title" : "Pasta type",
         "type" : "square-select",
-        "optionsList" : ["Chicken","Steak","Tofu","Veggies"],
-        "price" : 2
+        "optionsList" : ["Protein","Wheat","Regular","Spiral"],
+        "price" : 0
       },
       { "title" : "Sauce",
         "type" : "dropdown",
         "optionsList" : [
-          {"value" : "teryaki", "label" : "Teryaki" },
-          {"value" : "orange", "label" : "Orange" },
-          {"value" : "plum", "label" : "Plum" },
-          {"value" : "bigDaves", "label" : "Big Dave's" },
-          {"value" : "bbq", "label" : "BBQ" }
+          {"value" : "Alfredo", "label" : "Alfredo" },
+          {"value" : "Marinara", "label" : "Marinara" },
+          {"value" : "Meat-Sauce", "label" : "Pesto" },
+          {"value" : "A-la-Vodka", "label" : "Meat Sauce" }
         ],
         "price" : 0
       },
       { "title" : "Extra",
-        "type" : "select-box",
-        "optionsList" : ["Sauce-Light","Sauce-medium","No-rice","Extra-rice"],
+        "type" : "square-select",
+        "optionsList" : ["Meatball","Vegetables","Steak", "chicken"],
         "price" : 0
       }
     ]

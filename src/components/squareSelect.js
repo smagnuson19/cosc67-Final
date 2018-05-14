@@ -26,11 +26,10 @@ class SquareSelect extends Component {
 
         this.setState({ quantity0: this.state.quantity0 + 1 }, () => {
           total = (this.props.optionsPrice);
-          this.props.updateTotal(total);
           const json = { };
-          json[`${this.props.optionsList[0]} quanity: `] = this.state.quantity0;
+          json[`${this.props.optionsList[0]}`] = this.state.quantity0;
           item = Object.assign(json, item);
-          this.props.updateItems(item);
+          this.props.updateTotal(total, item);
         });
 
         break;
@@ -39,11 +38,10 @@ class SquareSelect extends Component {
 
         this.setState({ quantity1: this.state.quantity1 + 1 }, () => {
           total = (this.props.optionsPrice);
-          this.props.updateTotal(total);
           const json = { };
-          json[`${this.props.optionsList[1]} quanity: `] = this.state.quantity1;
+          json[`${this.props.optionsList[1]}`] = this.state.quantity1;
           item = Object.assign(json, item);
-          this.props.updateItems(item);
+          this.props.updateTotal(total, item);
         });
 
         break;
@@ -51,11 +49,10 @@ class SquareSelect extends Component {
       case 'button2':
         this.setState({ quantity2: this.state.quantity2 + 1 }, () => {
           total = (this.props.optionsPrice);
-          this.props.updateTotal(total);
           const json = { };
-          json[`${this.props.optionsList[2]} quanity: `] = this.state.quantity2;
+          json[`${this.props.optionsList[2]}`] = this.state.quantity2;
           item = Object.assign(json, item);
-          this.props.updateItems(item);
+          this.props.updateTotal(total, item);
         });
 
         break;
@@ -63,11 +60,10 @@ class SquareSelect extends Component {
       case 'button3':
         this.setState({ quantity3: this.state.quantity3 + 1 }, () => {
           total = (this.props.optionsPrice);
-          this.props.updateTotal(total);
           const json = { };
-          json[`${this.props.optionsList[3]} quanity: `] = this.state.quantity3;
+          json[`${this.props.optionsList[3]}`] = this.state.quantity3;
           item = Object.assign(json, item);
-          this.props.updateItems(item);
+          this.props.updateTotal(total, item);
         });
 
         break;

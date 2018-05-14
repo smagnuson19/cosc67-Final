@@ -9,7 +9,10 @@ class MenuItem extends Component {
     super(props);
     this.state = {
       price: 0,
-      optionsSelected: {},
+      optionsSelected: {
+        Item: this.props.theTitle,
+        Id: this.props.theID,
+      },
       menuItemInfo: [],
 
     };
@@ -23,20 +26,26 @@ class MenuItem extends Component {
         return response.json();
       })
       .then((json) => {
-        console.log(json.products);
         this.setState({ menuItemInfo: json.products[this.props.theID] });
         this.setState({ price: json.products[this.props.theID].price });
         // console.log(this.state.menuItemInfo);
       });
   }
-  updateTotal(value) {
-    this.setState({ price: this.state.price + value });
+  updateTotal(value, item) {
+    this.setState({ price: this.state.price + value }, () => {
+      this.updateItems(item);
+    });
   }
 
-  updateItems(item, quantity) {
-    const newItem = Object.assign(this.state.optionsSelected, item);
+  updateItems(item) {
+    const newItem = Object.assign(this.state.optionsSelected, item, { price: this.state.price });
     this.setState({ optionsSelected: newItem });
     console.log(`OPTIONS SELECTED in update ${JSON.stringify(this.state.optionsSelected)}`);
+  }
+
+  itemAddedToCart() {
+    this.props.updateTotal(this.state.price);
+    this.props.updateItemList(this.state.optionsSelected);
   }
 
 
@@ -51,7 +60,6 @@ class MenuItem extends Component {
             optionsPrice={itemOption.price}
             optionsList={itemOption.optionsList}
             updateTotal={this.updateTotal}
-            updateItems={this.updateItems}
           />
         </div>
       );
@@ -64,7 +72,6 @@ class MenuItem extends Component {
             theID={this.props.theID}
             optionsPrice={itemOption.price}
             updateTotal={this.updateTotal}
-            updateItems={this.updateItems}
             optionsListString={stringItem}
           />
         </div>
@@ -108,6 +115,7 @@ class MenuItem extends Component {
               this.renderOptions(itemOption)
               ))}
           </div>
+          <button onClick={() => this.itemAddedToCart()}>Add To Order</button>
         </div>
       );
     }

@@ -16,16 +16,23 @@ class App extends Component {
 
     this.state = {
       menuItems: [],
-      // Total
-      // itemsInCart: [],
+      total: 0,
+      itemsInCart: [],
       itemSelection: 0,
       modalIsOpen: false,
+      modalPayIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
     // this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     Modal.setAppElement('#main');
+    this.updateTotal = this.updateTotal.bind(this);
+    this.updateItemList = this.updateItemList.bind(this);
+    this.renderCart = this.renderCart.bind(this);
+    this.closePayModal = this.closePayModal.bind(this);
+    this.openPayModal = this.openPayModal.bind(this);
+    this.renderPayNowButton = this.renderPayNowButton.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +41,6 @@ class App extends Component {
         return response.json();
       })
       .then((json) => {
-        console.log(json.products);
         this.setState({ menuItems: json.products });
       });
   }
@@ -49,14 +55,116 @@ class App extends Component {
     console.log(this.state.menuItems[this.state.itemSelection].options);
   }
 
-  // afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  // //  this.subtitle.style.color = '#f00';
-  // }
-
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+  }
+  closePayModal() {
+    this.setState({ modalPayIsOpen: false });
+  }
+  openPayModal() {
+    this.setState({ modalPayIsOpen: true });
+  }
+
+  updateTotal(totalPrice) {
+    this.setState({ total: this.state.total + totalPrice });
+  }
+
+  clearCart() {
+    const newList = [];
+    this.setState({ itemsInCart: newList });
+    this.setState({ total: 0 });
+  }
+
+  payNow(modalStyles) {
+    return (
+      <Modal
+        isOpen={this.state.modalPayIsOpen}
+          // onAfterOpen={this.afterOpenModal}
+        onRequestClose={this.closePayModal}
+        overlayClassName="Overlay"
+        className="Modal"
+        style={modalStyles}
+        contentLabel="Modal-Options"
+      >
+        <button onClick={this.closePayModal}>close</button>
+        <div>
+          {this.state.itemsInCart.map((cartItem, id) =>
+        (
+          <div className="cartItem" key={cartItem.id} >
+            <button onClick={() => this.removeItem(cartItem.Id)}> Remove item </button>
+            <p>{JSON.stringify(cartItem)} </p>
+          </div>
+
+        )) }
+          <h2>SWIPE CARD ON THE LEFT</h2>
+
+        </div>
+      </Modal>
+    );
+  }
+
+  removeItem(id) {
+    console.log(id);
+    for (let i = 0; i < this.state.itemsInCart.length;) {
+      console.log(this.state.itemsInCart[i].Id);
+      if (id === this.state.itemsInCart[i].Id) {
+        const newList = [].concat(this.state.itemsInCart);
+        newList.splice(i, 1);
+        console.log(newList);
+        this.setState({ itemsInCart: newList });
+        const itemPrice = this.state.itemsInCart[id].price;
+        this.updateTotal(-1 * (itemPrice));
+        break;
+      } else {
+        i += 1;
+      }
+    }
+  }
+
+  updateItemList(itemList) {
+    const newItemToAdd = JSON.parse(JSON.stringify(itemList));
+
+    this.setState({ itemsInCart: [...this.state.itemsInCart, newItemToAdd] });
+    console.log(this.state.itemsInCart);
+    this.closeModal();
+  }
+
+  renderPayNowButton() {
+    if (this.state.itemsInCart.length > 0) {
+      return (
+        <li><button onClick={() => this.openPayModal()}> Pay Now </button></li>
+      );
+    } else {
+      return null;
+    }
+  }
+
+
+  renderCart() {
+    if (this.state.itemsInCart.length === 0) {
+      return (
+        <div className="no-cart-items">
+          <h3> Items </h3>
+          <p> No items in order. Add some by touching on the boxes below </p>
+        </div>
+      );
+    } else {
+      return (
+        <div className="itemList">
+          <h3> Items </h3>
+          {console.log(this.state.itemsInCart)}
+          {this.state.itemsInCart.map((cartItem, id) =>
+          (
+            <div className="cartItem" key={cartItem.id} >
+              <button onClick={() => this.removeItem(cartItem.Id)}> Remove item </button>
+              <p>{JSON.stringify(cartItem)} </p>
+            </div>
+
+          )) }
+        </div>
+      );
+    }
   }
 
   render() {
@@ -102,15 +210,16 @@ class App extends Component {
       return (
         <div className="body-wrapper">
           <div className="itemListDisplay">
-            <div className="itemList">
-              An item in your cart goes here
-            </div>
+            {this.renderCart()}
             <div className="itemListInfo">
               <ul>
-                <li> Total: </li>
-                <li> Pay Now: </li>
+
+                <li> Total: {this.state.total}</li>
+                <li><button onClick={() => this.clearCart()}> Clear Cart </button></li>
+                {this.renderPayNowButton()}
               </ul>
             </div>
+            {this.payNow(modalStyles)}
           </div>
 
 
@@ -145,9 +254,14 @@ class App extends Component {
             <button onClick={this.closeModal}>close</button>
             <div>I am a modal</div>
             <div>
+
               <MenuItem
                 theID={this.state.menuItems[this.state.itemSelection].id}
+                theTitle={this.state.menuItems[this.state.itemSelection].title}
+                updateTotal={this.updateTotal}
+                updateItemList={this.updateItemList}
               />
+
             </div>
           </Modal>
         </div>
