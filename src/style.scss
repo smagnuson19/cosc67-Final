@@ -39,12 +39,66 @@ a:hover{
 
 }
 
+.top-portion-pay-modal{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#payNowModal{
+  display:flex;
+  flex-direction: column;
+  button {
+    border: None;
+    background: rgb(34, 179, 40);
+    border-radius: .5rem;
+    padding: .4rem;
+    font-weight: bold;
+    font-size: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .cartItem{
+    font-size: 115%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+
+    button{
+      font-size: .7rem;
+      margin-right: .3rem;
+      height: 1.8rem;
+    }
+      .wierd-array{
+        display:flex;
+        flex-direction: column;
+        padding: 0;
+        p{
+          margin-top: .1rem;
+          padding-left: 1rem;
+          font-size: 90%;
+        }
+    }
+
+  }
+}
+
 .body-wrapper{
   display: flex;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
   width: 95%;
+
+  .backButton{
+      border: None;
+      background: rgb(34, 179, 40);
+      border-radius: .5rem;
+      padding: .4rem;
+      font-weight: bold;
+      font-size: 90%;
+      height: 70%;
+  }
 
 
   .itemListDisplay{
@@ -64,14 +118,27 @@ a:hover{
     }
 
     .cartItem{
+      font-size: 115%;
       display: flex;
       flex-direction: row;
       align-content: center;
 
-      .wierd-array{
-        display:flex;
-        flex-direction: row;
+      button{
+        font-size: .7rem;
+        margin-right: .3rem;
+        height: 1.8rem;
       }
+        .wierd-array{
+          display:flex;
+          flex-direction: column;
+          padding: 0;
+          p{
+            margin-top: .1rem;
+            padding-left: 1rem;
+            font-size: 90%;
+          }
+      }
+
     }
     button {
       border: None;
@@ -93,6 +160,8 @@ a:hover{
   }
 
 }
+
+
 .menuItem-Modal{
   display: flex;
   flex-direction: row;

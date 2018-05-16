@@ -81,5 +81,34 @@
         "price" : 0
       }
     ]
+  },
+  { "id" : 3,
+    "title": "Sushi",
+    "price" : 12,
+    "description": "Fresh from the ocean! ",
+    "picture_url": "http://sushitakeoutenjoy.com/wp-content/uploads/2016/08/sushi_sashimi_roll_combo-400x300.jpg",
+    "options" : [
+      { "title" : "Fish Type",
+        "type" : "dropdown",
+        "optionsList" : [
+          {"value" : "Yellowfin", "label" : "Yellowfin" },
+          {"value" : "Bonito", "label" : "Bonito" },
+          {"value" : "Salmon", "label" : "Salmon" },
+          {"value" : "Halibut", "label" : "Halibut" },
+          {"value" : "Squid", "label" : "Squid" }
+        ],
+        "price" : 0
+      },
+      { "title" : "Ingredients",
+        "type" : "dropdown",
+        "optionsList" : [
+          {"value" : "Advocado", "label" : "Advocado" },
+          {"value" : "SalmonEggs", "label" : "Salmon Eggs" },
+          {"value" : "Celery", "label" : "Celery" },
+          {"value" : "Nori", "label" : "Nori" }
+        ],
+        "price" : 0
+      }
+    ]
   }
 ]}
