@@ -33,6 +33,7 @@ class App extends Component {
     this.closePayModal = this.closePayModal.bind(this);
     this.openPayModal = this.openPayModal.bind(this);
     this.renderPayNowButton = this.renderPayNowButton.bind(this);
+    this.cartItemRender = this.cartItemRender.bind(this);
   }
 
   componentDidMount() {
@@ -130,6 +131,30 @@ class App extends Component {
     this.closeModal();
   }
 
+
+  cartItemRender(cartItem) {
+    (console.log(this.state.price));
+    const newArray = [];
+
+    const allPropertyNames = Object.keys(cartItem);
+    for (let j = 0; j < allPropertyNames.length; j++) {
+      const name = allPropertyNames[j];
+      console.log(name);
+      const value = cartItem[name];
+
+      if (name !== 'Id' || name !== 'Item') {
+        newArray.push(`${name}: `);
+        newArray.push(`${value}, `);
+      }
+    }
+    return (
+      <div className="wierd-array">
+        {newArray.map(item => (
+          <span>{ item } </span>
+    ))}
+      </div>);
+  }
+
   renderPayNowButton() {
     if (this.state.itemsInCart.length > 0) {
       return (
@@ -158,7 +183,7 @@ class App extends Component {
           (
             <div className="cartItem" key={cartItem.id} >
               <button onClick={() => this.removeItem(cartItem.Id)}> Remove item </button>
-              <p>{JSON.stringify(cartItem)} </p>
+              {this.cartItemRender(cartItem)}
             </div>
 
           )) }
@@ -231,10 +256,13 @@ class App extends Component {
                 (
                   <div data-index={product.id} key={product.id} role="button" tabIndex={0} className="menuItem-Wrapper" onClick={() => this.onSelectItemClick(product.id)}>
                     <ul>
-                      <li><h3>{product.name}</h3></li>
+                      <ul className="upper">
+                        <li><h3>{product.title}</h3></li>
+                        <li><h3>Price: ${product.price}</h3></li>
+                      </ul>
+                      <li><p>Description: {product.description}</p></li>
                       <li><img src={product.picture_url} alt="" /></li>
-                      <li>Descrip: {product.description}</li>
-                      <li>Price: {product.price}</li>
+
                     </ul>
                   </div>
           ))}
@@ -250,9 +278,7 @@ class App extends Component {
             style={modalStyles}
             contentLabel="Modal-Options"
           >
-            <h2>Hello</h2>
             <button onClick={this.closeModal}>close</button>
-            <div>I am a modal</div>
             <div>
 
               <MenuItem

@@ -100,14 +100,13 @@ class MenuItem extends Component {
       // console.log(this.state.menuItemInfo.options);
 
       return (
-        <div className="menuItem-Wrapper" >
+        <div className="menuItem-Modal" >
           <div className="header-area">
-            <ul>
-              <li> {this.state.menuItemInfo.title}
-                Price: {this.state.price}
-              </li>
-              <li> Description: {this.state.menuItemInfo.description} </li>
+            <ul className="top-modal">
+              <li> <h2> {this.state.menuItemInfo.title} </h2></li>
+              <li><h2> Price: {this.state.price}</h2> </li>
             </ul>
+            <li> Description: {this.state.menuItemInfo.description} </li>
             <img src={this.state.menuItemInfo.picture_url} alt="" />
           </div>
           <div className="menuOptions-area">
@@ -115,7 +114,7 @@ class MenuItem extends Component {
               this.renderOptions(itemOption)
               ))}
           </div>
-          <button onClick={() => this.itemAddedToCart()}>Add To Order</button>
+          <button id="add-order" onClick={() => this.itemAddedToCart()}>Add To Order</button>
         </div>
       );
     }

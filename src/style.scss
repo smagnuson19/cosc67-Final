@@ -62,13 +62,25 @@ a:hover{
     .itemListInfo{
       padding-bottom: 1%;
     }
+
+    .cartItem{
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+
+      .wierd-array{
+        display:flex;
+        flex-direction: row;
+      }
+    }
     button {
       border: None;
       background: rgb(34, 179, 40);
       border-radius: .5rem;
       padding: .4rem;
       font-weight: bold;
-      font-size: 90%
+      font-size: 90%;
+      height: 70%;
     }
     ul{
       height: 100%;
@@ -81,26 +93,71 @@ a:hover{
   }
 
 }
+.menuItem-Modal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .menuOptions-area{
+    padding: 1rem;
+  }
+  #add-order {
+    border: None;
+    background: rgb(34, 179, 40);
+    border-radius: .5rem;
+    padding: .4rem;
+    font-weight: bold;
+    font-size: 90%
+  }
+
+  img{
+    width: 90%;
+    height: auto;
+  }
+  .header-area{
+    .top-modal{
+      display: flex;
+      flex-direction: row;
+      padding-right: 10%;
+      justify-content: space-between;
+    }
+  }
+
+
+}
 
 .menuItem-wrapper {
-  width: 90%;
-  border-radius: 1rem;
+  width: 90%;;
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1rem;
+  margin-bottom: .2rem;
   flex-direction: column;
   .menuItem-Wrapper {
-    border-radius: 1rem;
-    margin: 2rem;
-    padding-left: .5rem;
-    padding-right:.5rem;
-    padding-bottom: 1rem;
-    width: 23rem;
+    margin: 1rem;
+    display: flex;
+    max-height: 20rem;
+    justify-content: center;
+
+    .upper{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0;
+      margin-right: 20%;
+      padding: 0;
+    }
+    p{
+      margin-top: -1rem;
+    }
 
     img {
-      width: auto;
-      height: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1rem;
+
+      max-width:50%;
+      max-height:50%;
     }
     ul{
       width: auto;
