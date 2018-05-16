@@ -13,10 +13,10 @@
       { "title" : "Sauce",
         "type" : "dropdown",
         "optionsList" : [
-          {"value" : "teryaki", "label" : "Teryaki" },
+          {"value" : "teriyaki", "label" : "Teriyaki" },
           {"value" : "orange", "label" : "Orange" },
           {"value" : "plum", "label" : "Plum" },
-          {"value" : "bigDaves", "label" : "Big Dave's" },
+          {"value" : "davesOriginal", "label" : "Dave's Original" },
           {"value" : "bbq", "label" : "BBQ" }
         ],
         "price" : 0
@@ -29,9 +29,9 @@
     ]
   },
   { "id" : 1,
-    "title": "Omlette",
+    "title": "Omelette",
     "price" : 8,
-    "description": "Omlette's are the best!",
+    "description": "Omelettes are the best!",
     "picture_url": "https://leitesculinaria.com/wp-content/uploads/fly-images/99070/ham-and-cheese-omelet-recipe-fp-400x300-c.jpg",
     "options" : [
       { "title" : "Protein",
@@ -57,12 +57,12 @@
   { "id" : 2,
     "title": "Pasta",
     "price" : 10,
-    "description": "Everyone loves pasta! ",
+    "description": "Everyone loves pasta!",
     "picture_url": "https://www.steppingstoneeh.org/wp-content/uploads/2017/10/Tomato_Basil_Pasta-400x300.jpg",
     "options" : [
       { "title" : "Pasta type",
         "type" : "square-select",
-        "optionsList" : ["Protein","Wheat","Regular","Spiral"],
+        "optionsList" : ["Protein","Wheat","Regular","Tri-color","Gluten-Free"],
         "price" : 0
       },
       { "title" : "Sauce",
@@ -70,14 +70,14 @@
         "optionsList" : [
           {"value" : "Alfredo", "label" : "Alfredo" },
           {"value" : "Marinara", "label" : "Marinara" },
-          {"value" : "Meat-Sauce", "label" : "Pesto" },
-          {"value" : "A-la-Vodka", "label" : "Meat Sauce" }
+          {"value" : "Meat-Sauce", "label" : "Meat Sauce" },
+          {"value" : "Pesto", "label" : "Pesto" }
         ],
         "price" : 0
       },
       { "title" : "Extra",
         "type" : "square-select",
-        "optionsList" : ["Meatball","Vegetables","Steak", "chicken"],
+        "optionsList" : ["Meatball","Vegetables","Steak","Chicken"],
         "price" : 0
       }
     ]
