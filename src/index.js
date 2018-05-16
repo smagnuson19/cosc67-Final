@@ -34,6 +34,7 @@ class App extends Component {
     this.openPayModal = this.openPayModal.bind(this);
     this.renderPayNowButton = this.renderPayNowButton.bind(this);
     this.cartItemRender = this.cartItemRender.bind(this);
+    this.cartItemRenderForPay = this.cartItemRenderForPay.bind(this);
   }
 
   componentDidMount() {
@@ -88,21 +89,50 @@ class App extends Component {
         style={modalStyles}
         contentLabel="Modal-Options"
       >
-        <button onClick={this.closePayModal}>close</button>
-        <div>
-          {this.state.itemsInCart.map((cartItem, id) =>
+        <div id="payNowModal">
+          <div className="top-portion-pay-modal">
+            <button onClick={this.closePayModal}>EXIT</button>
+            <h2>SWIPE CARD ON THE LEFT</h2>
+            <h2>Total: ${this.state.total}</h2>
+          </div>
+          <div>
+            <h3> Items </h3>
+            {this.state.itemsInCart.map((cartItem, id) =>
         (
           <div className="cartItem" key={cartItem.id} >
-            <button onClick={() => this.removeItem(cartItem.Id)}> Remove item </button>
-            <p>{JSON.stringify(cartItem)} </p>
+            <p>{this.cartItemRenderForPay(cartItem) }</p>
           </div>
 
         )) }
-          <h2>SWIPE CARD ON THE LEFT</h2>
 
+
+          </div>
         </div>
       </Modal>
     );
+  }
+
+  cartItemRenderForPay(cartItem) {
+    (console.log(this.state.price));
+    const newArray = [];
+    const allPropertyNames = Object.keys(cartItem);
+    for (let j = 2; j < allPropertyNames.length; j++) {
+      const name = allPropertyNames[j];
+      console.log(name);
+      const value = cartItem[name];
+
+      if (name === 'price') {
+        console.log('price');
+      } else {
+        newArray.push(`${name}: `);
+        newArray.push(`${value}, `);
+      }
+    }
+    return (
+      <div className="wierd-array">
+        <span id="special-title">{`Item: ${cartItem.Item} `}</span>
+        <p>Additions: {newArray.join(' ').slice(0, -2)} </p>
+      </div>);
   }
 
   removeItem(id) {
@@ -135,23 +165,24 @@ class App extends Component {
   cartItemRender(cartItem) {
     (console.log(this.state.price));
     const newArray = [];
-
+    let price = 0;
     const allPropertyNames = Object.keys(cartItem);
-    for (let j = 0; j < allPropertyNames.length; j++) {
+    for (let j = 2; j < allPropertyNames.length; j++) {
       const name = allPropertyNames[j];
       console.log(name);
       const value = cartItem[name];
 
-      if (name !== 'Id' || name !== 'Item') {
+      if (name === 'price') {
+        price = value;
+      } else {
         newArray.push(`${name}: `);
         newArray.push(`${value}, `);
       }
     }
     return (
       <div className="wierd-array">
-        {newArray.map(item => (
-          <span>{ item } </span>
-    ))}
+        <span id="special-title">{`Item: ${cartItem.Item}              $${price}`}</span>
+        <p>Additions: {newArray.join(' ').slice(0, -2)} </p>
       </div>);
   }
 
@@ -182,7 +213,7 @@ class App extends Component {
           {this.state.itemsInCart.map((cartItem, id) =>
           (
             <div className="cartItem" key={cartItem.id} >
-              <button onClick={() => this.removeItem(cartItem.Id)}> Remove item </button>
+              <button onClick={() => this.removeItem(cartItem.Id)}> Remove</button>
               {this.cartItemRender(cartItem)}
             </div>
 
@@ -239,7 +270,7 @@ class App extends Component {
             <div className="itemListInfo">
               <ul>
 
-                <li> Total: {this.state.total}</li>
+                <li> Total: ${this.state.total}</li>
                 <li><button onClick={() => this.clearCart()}> Clear Cart </button></li>
                 {this.renderPayNowButton()}
               </ul>
@@ -260,7 +291,7 @@ class App extends Component {
                         <li><h3>{product.title}</h3></li>
                         <li><h3>Price: ${product.price}</h3></li>
                       </ul>
-                      <li><p>Description: {product.description}</p></li>
+                      <li><p>{product.description}</p></li>
                       <li><img src={product.picture_url} alt="" /></li>
 
                     </ul>
@@ -278,7 +309,7 @@ class App extends Component {
             style={modalStyles}
             contentLabel="Modal-Options"
           >
-            <button onClick={this.closeModal}>close</button>
+            <button id="backButton"onClick={this.closeModal}>Back To Menu</button>
             <div>
 
               <MenuItem
