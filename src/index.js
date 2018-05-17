@@ -92,7 +92,7 @@ class App extends Component {
         <div id="payNowModal">
           <div className="top-portion-pay-modal">
             <button onClick={this.closePayModal}>EXIT</button>
-            <h2>SWIPE CARD ON THE LEFT</h2>
+            <h2>&larr; SWIPE CARD ON THE LEFT</h2>
             <h2>Total: ${this.state.total}</h2>
           </div>
           <div>
