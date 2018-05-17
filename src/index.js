@@ -95,6 +95,12 @@ class App extends Component {
             <h2>&larr; SWIPE CARD ON THE LEFT</h2>
             <h2>Total: ${this.state.total}</h2>
           </div>
+          <div className = "Instructions for payment">
+            <h2> Payment Instructions </h2>
+            <h3> This terminal accepts Dartmouth ID and all major credit cards.</h3>
+            <h3> Please swipe your card using the card reader on the left. </h3>
+            <h3>If you would like to pay using cash, please see the cashier inside the cafe. </h3>
+          </div>
           <div>
             <h3> Items </h3>
             {this.state.itemsInCart.map((cartItem, id) =>

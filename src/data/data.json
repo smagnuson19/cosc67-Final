@@ -31,7 +31,7 @@
   { "id" : 1,
     "title": "Omelette",
     "price" : 8,
-    "description": "A tasty egg creation filled with your choice of healthy toppings.",
+    "description": "A tasty egg creation filled with your choice of healthy toppings. Choose from many different types of protein and vegetable toppings.",
     "picture_url": "https://leitesculinaria.com/wp-content/uploads/fly-images/99070/ham-and-cheese-omelet-recipe-fp-400x300-c.jpg",
     "options" : [
       { "title" : "Egg Type",
