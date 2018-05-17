@@ -36,7 +36,11 @@
     "options" : [
       { "title" : "Egg Type",
         "type" : "dropdown",
-        "optionsList" : ["Whole Egg","Egg White","Half & Half"],
+        "optionsList" : [
+          {"value" : "Whole Egg", "label" : "Whole Egg"},
+          {"value" : "Egg White", "label" : "Egg White"},
+          {"value" : "Half & Half", "label" : "Half & Half"}
+        ],
         "price" : 0
       },
       { "title" : "Protein",
