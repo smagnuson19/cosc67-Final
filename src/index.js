@@ -202,7 +202,7 @@ class App extends Component {
       return (
         <div className="no-cart-items">
           <h3> Items </h3>
-          <p> No items in order. Add some by touching on the boxes below </p>
+          <p> No items in order. Add some by touching on the boxes below. </p>
         </div>
       );
     } else {

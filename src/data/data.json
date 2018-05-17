@@ -1,8 +1,8 @@
 { "products" : [
   { "id" : 0 ,
-    "title": "StirFry",
+    "title": "Stir-Fry",
     "price" : 10,
-    "description": "Try this healthy creation!",
+    "description": "A healthy mix of vegetables and protein sauteed with your choice of sauces and served on a bed of rice.",
     "picture_url": "http://chicken.betterrecipes.com/uploads/photo/400x300/2/2/227d95b13bfdb58901398d7297ba54fb.jpg",
     "options" : [
       { "title" : "Protein",
@@ -13,10 +13,10 @@
       { "title" : "Sauce",
         "type" : "dropdown",
         "optionsList" : [
-          {"value" : "teryaki", "label" : "Teryaki" },
+          {"value" : "teriyaki", "label" : "Teriyaki" },
           {"value" : "orange", "label" : "Orange" },
           {"value" : "plum", "label" : "Plum" },
-          {"value" : "bigDaves", "label" : "Big Dave's" },
+          {"value" : "davesOriginal", "label" : "Dave's Original" },
           {"value" : "bbq", "label" : "BBQ" }
         ],
         "price" : 0
@@ -29,11 +29,16 @@
     ]
   },
   { "id" : 1,
-    "title": "Omlette",
+    "title": "Omelette",
     "price" : 8,
-    "description": "Omlette's are the best!",
+    "description": "A tasty egg creation filled with your choice of healthy toppings.",
     "picture_url": "https://leitesculinaria.com/wp-content/uploads/fly-images/99070/ham-and-cheese-omelet-recipe-fp-400x300-c.jpg",
     "options" : [
+      { "title" : "Egg Type",
+        "type" : "dropdown",
+        "optionsList" : ["Whole Egg","Egg White","Half & Half"],
+        "price" : 0
+      },
       { "title" : "Protein",
         "type" : "square-select",
         "optionsList" : ["Chicken","Turkey","Tofu","None"],
@@ -57,12 +62,12 @@
   { "id" : 2,
     "title": "Pasta",
     "price" : 10,
-    "description": "Everyone loves pasta! ",
+    "description": "Mix in pasta with vegetables, a meatball, and your choice of sauces. Sauteed together and cooked to perfection.",
     "picture_url": "https://www.steppingstoneeh.org/wp-content/uploads/2017/10/Tomato_Basil_Pasta-400x300.jpg",
     "options" : [
       { "title" : "Pasta type",
         "type" : "square-select",
-        "optionsList" : ["Protein","Wheat","Regular","Spiral"],
+        "optionsList" : ["Protein","Wheat","Regular","Tri-color","Gluten-Free"],
         "price" : 0
       },
       { "title" : "Sauce",
@@ -70,14 +75,14 @@
         "optionsList" : [
           {"value" : "Alfredo", "label" : "Alfredo" },
           {"value" : "Marinara", "label" : "Marinara" },
-          {"value" : "Meat-Sauce", "label" : "Pesto" },
-          {"value" : "A-la-Vodka", "label" : "Meat Sauce" }
+          {"value" : "Meat-Sauce", "label" : "Meat Sauce" },
+          {"value" : "Pesto", "label" : "Pesto" }
         ],
         "price" : 0
       },
       { "title" : "Extra",
         "type" : "square-select",
-        "optionsList" : ["Meatball","Vegetables","Steak", "chicken"],
+        "optionsList" : ["Meatball","Vegetables","Steak","Chicken"],
         "price" : 0
       }
     ]
@@ -85,7 +90,7 @@
   { "id" : 3,
     "title": "Sushi",
     "price" : 12,
-    "description": "Fresh from the ocean! ",
+    "description": "Fresh-made right before your eyes, Collis' sushi offerings give you a choice from many different styles and ingredients.",
     "picture_url": "http://sushitakeoutenjoy.com/wp-content/uploads/2016/08/sushi_sashimi_roll_combo-400x300.jpg",
     "options" : [
       { "title" : "Fish Type",
